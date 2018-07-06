@@ -12,26 +12,16 @@ source:
   sha256: {{ sha256 }}
 
 build:
-  number: 0
-  features:
-    - vc9  # [win and py27]
-    - vc10  # [win and py34]
-    - vc14  # [win and py35]
+  number: 1
 
 requirements:
   build:
-    - python  # [win]
     - cmake  # [win]
-    - vc 9  # [win and py27]
-    - vc 10  # [win and py34]
-    - vc 14  # [win and py35]
+    - {{ compiler('c') }}
+  host:
     - sdl2
-    - toolchain
 
   run:
-    - vc 9  # [win and py27]
-    - vc 10  # [win and py34]
-    - vc 14  # [win and py35]
     - sdl2
 
 test:
@@ -50,7 +40,7 @@ about:
   license_file: COPYING
   summary: "Graphics primitives and surface functions for SDL2"
   description: |
-    The SDL2_gfx library provides the basic drawing functions such as lines, 
+    The SDL2_gfx library provides the basic drawing functions such as lines,
     circles or polygons provided by SDL_gfx on SDL2 against renderers of SDL2.
   doc_url: http://www.ferzkopp.net/Software/SDL2_gfx/Docs/html/index.html
   dev_url: https://sourceforge.net/projects/sdl2gfx/
