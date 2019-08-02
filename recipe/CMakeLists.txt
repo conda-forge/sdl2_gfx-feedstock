@@ -1,11 +1,11 @@
 # Written by Daniel Schreij (dschreij@gmail.com) on 1 Nov 2016
 # This procedure is configured to work in an Anaconda build environment (contiuum.io)
-# In this environment, it should be called like 
-# 
+# In this environment, it should be called like
+#
 #    %LIBRARY_BIN%\cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX:PATH="%LIBRARY_PREFIX%" -DCMAKE_BUILD_TYPE:STRING=Release ..
-# 
+#
 # to be correctly configured
-# 
+#
 # This file is intended to be used for Windows only! For other platforms, the supplied makefiles work very well.
 
 

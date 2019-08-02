@@ -1,6 +1,6 @@
 {% set name = "SDL2_gfx" %}
-{% set version = "1.0.1" %}
-{% set sha256 = "ec6a7a0dd24d7824c6b69feb81a309975eda64b5ff8d6a1ab02b27cb95158b16" %}
+{% set version = "1.0.4" %}
+{% set sha256 = "8b5048f99c006f3d3e53d1a049576a789dec2f5683157e36849bbc5c878778fc" %}
 
 package:
   name: {{ name|lower }}
@@ -13,30 +13,22 @@ source:
 
 build:
   number: 0
-  features:
-    - vc9  # [win and py27]
-    - vc10  # [win and py34]
-    - vc14  # [win and py35]
 
 requirements:
   build:
-    - python  # [win]
     - cmake  # [win]
-    - vc 9  # [win and py27]
-    - vc 10  # [win and py34]
-    - vc 14  # [win and py35]
-    - sdl2
-    - toolchain
-
+    - pkg-config  # [unix]
+    - autoconf  # [unix]
+    - automake  # [unix]
+    - libtool  # [unix]
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
+    - sdl2 2.0.*
   run:
-    - vc 9  # [win and py27]
-    - vc 10  # [win and py34]
-    - vc 14  # [win and py35]
-    - sdl2
+    - sdl2 2.0.*
 
 test:
-  requires:
-    - python {{ environ['PY_VER'] + '*' }}  # [win]
   commands:
     - test -f $PREFIX/lib/libSDL2_gfx.a  # [unix]
     - test -f $PREFIX/lib/libSDL2_gfx.dylib  # [osx]
