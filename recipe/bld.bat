@@ -1,31 +1,18 @@
 setlocal EnableDelayedExpansion
 
-if %ARCH%==32 (
-	set PLATFORM=Win32
-) else if %ARCH%==64 (
-	set PLATFORM=x64
-)
+copy %RECIPE_DIR%\CMakeLists.txt .\CMakeLists.txt
 
-:: See https://github.com/conda-forge/staged-recipes/pull/194#issuecomment-203577297
-:: Nasty workaround. Need to move a more current msbuild into PATH.  The one on
-:: AppVeyor barfs on the solution. This one comes from the Win7 SDK (.net 4.0),
-:: and is known to work.
-if %VS_MAJOR%==9 (
-    set "PATH=C:\Windows\Microsoft.NET\Framework\v4.0.30319;%PATH%"
-)
+:: Make a build folder and change to it.
+mkdir build
+cd build
 
-set "INCLUDE=%LIBRARY_INC%;%INCLUDE%;%LIBRARY_INC%\SDL2"
-set "LIB=%LIBRARY_LIB%;%LIBRARY_BIN%;%LIB%"
-set "AdditionalIncludeDirectories=%INCLUDE%"
-
-echo "Build env configuration"
-echo %INCLUDE%
-echo %LIB%
-echo %AdditionalIncludeDirectories%
-
-msbuild /nologo SDL2_gfx.sln "/p:Configuration=Release;Platform=%PLATFORM%;useenv=true"
+:: Configure using the CMakeFiles
+cmake -G "NMake Makefiles" -DCMAKE_INSTALL_PREFIX:PATH="%LIBRARY_PREFIX%" -DCMAKE_BUILD_TYPE:STRING=Release ..
 if errorlevel 1 exit 1
 
-move %PLATFORM%\Release\SDL2_gfx.lib %LIBRARY_LIB%
-move %PLATFORM%\Release\SDL2_gfx.dll %LIBRARY_BIN%
+:: Build!
+nmake
+if errorlevel 1 exit 1
+
+nmake install
 if errorlevel 1 exit 1
