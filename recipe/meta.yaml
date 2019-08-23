@@ -1,6 +1,6 @@
 {% set name = "SDL2_gfx" %}
-{% set version = "1.0.4" %}
-{% set sha256 = "8b5048f99c006f3d3e53d1a049576a789dec2f5683157e36849bbc5c878778fc" %}
+{% set version = "1.1.1" %}
+{% set sha256 = "d69bcbceb811b4e5712fbad3ede737166327f44b727f1388c32581dbbe8c599a" %}
 
 package:
   name: {{ name|lower }}
