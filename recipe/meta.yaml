@@ -1,6 +1,6 @@
 {% set name = "SDL2_gfx" %}
-{% set version = "1.0.4" %}
-{% set sha256 = "8b5048f99c006f3d3e53d1a049576a789dec2f5683157e36849bbc5c878778fc" %}
+{% set version = "2.0.0" %}
+{% set sha256 = "1a99b8fdc627157c56d24c7a3898a99ae66328bb7b8658cd0bcf6f9d963ac7ee" %}
 
 package:
   name: {{ name|lower }}
@@ -40,7 +40,7 @@ about:
   home: http://www.ferzkopp.net/wordpress/2016/01/02/sdl_gfx-sdl2_gfx/
   license: ZLIB
   license_file: COPYING
-  summary: "Graphics primitives and surface functions for SDL2"
+  summary: Graphics primitives and surface functions for SDL2
   description: |
     The SDL2_gfx library provides the basic drawing functions such as lines, 
     circles or polygons provided by SDL_gfx on SDL2 against renderers of SDL2.
