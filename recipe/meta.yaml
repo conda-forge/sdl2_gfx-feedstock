@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://sourceforge.net/projects/sdl2gfx/{{ name }}-{{ version }}.tar.gz
+  url: https://sourceforge.net/projects/sdl2gfx/files/{{ name }}-{{ version }}.tar.gz
   sha256: 8b5048f99c006f3d3e53d1a049576a789dec2f5683157e36849bbc5c878778fc
 
 build:
