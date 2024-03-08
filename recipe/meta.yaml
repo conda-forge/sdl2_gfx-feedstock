@@ -20,6 +20,7 @@ requirements:
     - automake  # [unix]
     - libtool  # [unix]
     - gnuconfig   # [unix]
+    - make
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
