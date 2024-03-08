@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://sourceforge.net/projects/sdl2gfx/files/{{ name }}-{{ version }}.tar.gz
-  sha256: 8b5048f99c006f3d3e53d1a049576a789dec2f5683157e36849bbc5c878778fc
+  sha256: 63e0e01addedc9df2f85b93a248f06e8a04affa014a835c2ea34bfe34e576262
 
 build:
   number: 1
@@ -19,6 +19,7 @@ requirements:
     - autoconf  # [unix]
     - automake  # [unix]
     - libtool  # [unix]
+    - gnuconfig   # [unix]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
@@ -27,8 +28,7 @@ requirements:
 test:
   commands:
     - test -f $PREFIX/lib/libSDL2_gfx.a  # [unix]
-    - test -f $PREFIX/lib/libSDL2_gfx.dylib  # [osx]
-    - test -f $PREFIX/lib/libSDL2_gfx.so  # [linux]
+    - test -f $PREFIX/lib/libSDL2_gfx${SHLIB_EXT}  # [unix]
     - if not exist %PREFIX%\\Library\\lib\\SDL2_gfx.lib exit 1  # [win]
     - if not exist %PREFIX%\\Library\\bin\\SDL2_gfx.dll exit 1  # [win]
 
