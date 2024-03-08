@@ -34,7 +34,7 @@ test:
 
 about:
   home: http://www.ferzkopp.net/wordpress/2016/01/02/sdl_gfx-sdl2_gfx/
-  license: ZLIB
+  license: Zlib
   license_file: COPYING
   summary: "Graphics primitives and surface functions for SDL2"
   description: |
