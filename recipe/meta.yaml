@@ -1,15 +1,13 @@
 {% set name = "SDL2_gfx" %}
 {% set version = "1.0.4" %}
-{% set sha256 = "8b5048f99c006f3d3e53d1a049576a789dec2f5683157e36849bbc5c878778fc" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: http://www.ferzkopp.net/Software/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  url: https://sourceforge.net/projects/{{ name|lower }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 8b5048f99c006f3d3e53d1a049576a789dec2f5683157e36849bbc5c878778fc
 
 build:
   number: 1
