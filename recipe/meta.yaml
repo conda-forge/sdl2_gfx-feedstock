@@ -1,18 +1,18 @@
 {% set name = "SDL2_gfx" %}
 {% set version = "1.0.4" %}
-{% set sha256 = "8b5048f99c006f3d3e53d1a049576a789dec2f5683157e36849bbc5c878778fc" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: http://www.ferzkopp.net/Software/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  url: https://sourceforge.net/projects/sdl2gfx/files/{{ name }}-{{ version }}.tar.gz
+  sha256: 63e0e01addedc9df2f85b93a248f06e8a04affa014a835c2ea34bfe34e576262
+  patches:
+    - fix-lrint.patch
 
 build:
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -21,24 +21,23 @@ requirements:
     - autoconf  # [unix]
     - automake  # [unix]
     - libtool  # [unix]
+    - gnuconfig   # [unix]
+    - make  # [unix]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
-    - sdl2 2.0.*
-  run:
-    - sdl2 2.0.*
+    - sdl2
 
 test:
   commands:
     - test -f $PREFIX/lib/libSDL2_gfx.a  # [unix]
-    - test -f $PREFIX/lib/libSDL2_gfx.dylib  # [osx]
-    - test -f $PREFIX/lib/libSDL2_gfx.so  # [linux]
+    - test -f $PREFIX/lib/libSDL2_gfx${SHLIB_EXT}  # [unix]
     - if not exist %PREFIX%\\Library\\lib\\SDL2_gfx.lib exit 1  # [win]
     - if not exist %PREFIX%\\Library\\bin\\SDL2_gfx.dll exit 1  # [win]
 
 about:
   home: http://www.ferzkopp.net/wordpress/2016/01/02/sdl_gfx-sdl2_gfx/
-  license: ZLIB
+  license: Zlib
   license_file: COPYING
   summary: "Graphics primitives and surface functions for SDL2"
   description: |
